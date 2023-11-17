@@ -17,7 +17,8 @@ app.listen(PORT, () => {
 app.post("/upload", multerMiddleware, async (req: Request, res: Response) => {
   try {
     const uploadedImage = await handler(req, res);
-    const url = uploadedImage?.url;
+    console.log(uploadedImage);
+    const url = uploadedImage?.secure_url;
     const projectName = req.body.name;
 
     if (!url) {
