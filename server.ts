@@ -1,11 +1,13 @@
 import "dotenv/config";
 import { handler, multerMiddleware } from "./multer.js";
 import db from "./db.js";
+import cors from "cors";
 import express from "express";
 import { projects } from "./schema.js";
 import type { Request, Response } from "express";
 
 const app = express();
+app.use(cors());
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
