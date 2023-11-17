@@ -17,8 +17,7 @@ const handler = async (req: Request, res: Response) => {
     const b64 = Buffer.from(req?.file?.buffer).toString("base64");
     let dataURI = "data:image/jpeg;base64," + b64;
     const cldRes = await handleUpload(dataURI);
-    console.log(cldRes);
-    res.json(cldRes);
+    return cldRes;
   } catch (error) {
     let message;
     if (error instanceof Error) message = error.message;
@@ -30,4 +29,5 @@ const handler = async (req: Request, res: Response) => {
     });
   }
 };
+
 export { handler, multerMiddleware };
